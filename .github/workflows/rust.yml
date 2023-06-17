@@ -36,7 +36,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: rust builds
-        path: target/wasm32-wasi/release/*.wasm
+        path: rust/wasi/print-hello-world/target/wasm32-wasi/release/*.wasm
         
     #- name: Run tests
    #   run: cargo test --verbose
