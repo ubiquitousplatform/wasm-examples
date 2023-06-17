@@ -32,7 +32,7 @@ jobs:
       run: cargo build --target wasm32-wasi --release
     - name: optimize the resulting wasm file for size
       run:  wasm-opt -Os -o target/wasm32-wasi/release/rust-print-hello-world.wasm target/wasm32-wasi/release/print-hello-world.wasm
-      
+    - run: ls -al target/wasm32-wasi/release
     - uses: actions/upload-artifact@v3
       with:
         name: rust builds
