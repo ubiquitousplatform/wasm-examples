@@ -30,8 +30,10 @@ jobs:
           sudo apt -y install binaryen
     - name: Build WASM in release profile
       run: cargo build --target wasm32-wasi --release
+    - name: Specify wasm file as unoptimized
+      run: mv target/wasm32-wasi/release/print-hello-world.wasm target/wasm32-wasi/release/print-hello-world-unoptimized.wasm
     - name: optimize the resulting wasm file for size
-      run:  wasm-opt -Os -o target/wasm32-wasi/release/rust-print-hello-world.wasm target/wasm32-wasi/release/print-hello-world.wasm
+      run:  wasm-opt -Os -o target/wasm32-wasi/release/print-hello-world.wasm target/wasm32-wasi/release/print-hello-world-unoptimized.wasm
     - run: ls -al target/wasm32-wasi/release
     - uses: actions/upload-artifact@v3
       with:
