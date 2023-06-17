@@ -13,13 +13,13 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  print-hello-world:
+  build-print-hello-world:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-    - run: cd wasi/print-hello-world
+    - run: cd rust/wasi/print-hello-world
     - name: Build
       run: cargo build --target wasm32-wasi
     #- name: Run tests
