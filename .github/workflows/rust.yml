@@ -11,16 +11,18 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-
+defaults:
+  run:
+    shell: bash
 jobs:
   build-print-hello-world:
-
+    defaults:
+      run:
+        working-directory: rust/wasi/print-hello-world
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
-    - run: cd rust/wasi/print-hello-world
-    - name: Build
+    - name: Build for WASM
       run: cargo build --target wasm32-wasi
     #- name: Run tests
    #   run: cargo test --verbose
